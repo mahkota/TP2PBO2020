@@ -18,10 +18,10 @@ import net.proteanit.sql.DbUtils;
  *
  * @author fachm
  */
-public class Perpanjang extends javax.swing.JFrame {
+public class Pengembalian extends javax.swing.JFrame {
 
     /**
-     * Creates new form Perpanjang
+     * Creates new form Pengembalian
      */
     
     Connection con = null;
@@ -29,7 +29,7 @@ public class Perpanjang extends javax.swing.JFrame {
     PreparedStatement pstchk = null;
     ResultSet rs = null;
     
-    public Perpanjang() {
+    public Pengembalian() {
         initComponents();
         showTableData();
     }
@@ -45,20 +45,18 @@ public class Perpanjang extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTextFieldKdBk = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldDurasi = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPanePeminjaman = new javax.swing.JScrollPane();
         jTablePeminjaman = new javax.swing.JTable();
-        jButtonPerpanjang = new javax.swing.JButton();
+        jButtonPengembalian = new javax.swing.JButton();
         jButtonMenu = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Perpanjang");
+        setTitle("Pengembalian");
 
         jLabel1.setText("Kode Buku");
 
-        jLabel2.setText("Durasi");
+        jLabel8.setText("1800570 - Fachri Veryawan Mahkota");
 
         jTablePeminjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,10 +71,10 @@ public class Perpanjang extends javax.swing.JFrame {
         ));
         jScrollPanePeminjaman.setViewportView(jTablePeminjaman);
 
-        jButtonPerpanjang.setText("Perpanjang");
-        jButtonPerpanjang.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPengembalian.setText("Pengembalian");
+        jButtonPengembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPerpanjangActionPerformed(evt);
+                jButtonPengembalianActionPerformed(evt);
             }
         });
 
@@ -87,8 +85,6 @@ public class Perpanjang extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("1800570 - Fachri Veryawan Mahkota");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,21 +92,16 @@ public class Perpanjang extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPanePeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPanePeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(75, 75, 75)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldDurasi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldKdBk))))
+                        .addComponent(jLabel1)
+                        .addGap(75, 75, 75)
+                        .addComponent(jTextFieldKdBk, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonPerpanjang, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
@@ -119,20 +110,15 @@ public class Perpanjang extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldKdBk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonPerpanjang)
-                        .addComponent(jButtonMenu)))
+                    .addComponent(jTextFieldKdBk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPengembalian)
+                    .addComponent(jButtonMenu))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPanePeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jScrollPanePeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -157,21 +143,18 @@ public class Perpanjang extends javax.swing.JFrame {
         }
     }
     
-    private void jButtonPerpanjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerpanjangActionPerformed
+    private void jButtonPengembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPengembalianActionPerformed
         // TODO add your handling code here:
         try {
             boolean kodeAda = false;
 
-            String sql = "UPDATE `peminjaman` SET `tanggal_pengembalian` "
-                    + "= DATE_ADD(`tanggal_pengembalian`, INTERVAL ? DAY) "
-                    + "WHERE `kode_buku` = ?";
+            String sql = "DELETE FROM `peminjaman` WHERE `kode_buku` = ?";
             con = DriverManager.getConnection("jdbc:mysql://localhost/pbo_tp2"
                 + "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
                 + "&useLegacyDatetimeCode=false&serverTimezone=UTC",
                 "root", "");
             pst = con.prepareStatement(sql);
-            pst.setString(1, jTextFieldDurasi.getText());
-            pst.setString(2, jTextFieldKdBk.getText());
+            pst.setString(1, jTextFieldKdBk.getText());
 
             pstchk = con.prepareStatement("SELECT * FROM `peminjaman`");
             ResultSet dup = pstchk.executeQuery();
@@ -184,8 +167,7 @@ public class Perpanjang extends javax.swing.JFrame {
                 }
             }
 
-            if (jTextFieldKdBk.getText().isEmpty()
-                || jTextFieldDurasi.getText().isEmpty()) {
+            if (jTextFieldKdBk.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Data gagal diperbaharui!"
                     + " Mohon lengkapi semua masukan.");
             }
@@ -204,7 +186,7 @@ public class Perpanjang extends javax.swing.JFrame {
         catch(SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-    }//GEN-LAST:event_jButtonPerpanjangActionPerformed
+    }//GEN-LAST:event_jButtonPengembalianActionPerformed
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
         // TODO add your handling code here:
@@ -229,33 +211,31 @@ public class Perpanjang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Perpanjang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pengembalian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Perpanjang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pengembalian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Perpanjang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pengembalian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Perpanjang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pengembalian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Perpanjang().setVisible(true);
+                new Pengembalian().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonMenu;
-    private javax.swing.JButton jButtonPerpanjang;
+    private javax.swing.JButton jButtonPengembalian;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPanePeminjaman;
     private javax.swing.JTable jTablePeminjaman;
-    private javax.swing.JTextField jTextFieldDurasi;
     private javax.swing.JTextField jTextFieldKdBk;
     // End of variables declaration//GEN-END:variables
 }

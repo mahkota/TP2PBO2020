@@ -51,6 +51,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         jButtonKembali.setText("Pengembalian");
+        jButtonKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKembaliActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("1800570 - Fachri Veryawan Mahkota");
 
@@ -101,6 +106,12 @@ public class MainMenu extends javax.swing.JFrame {
         this.dispose();
         new Perpanjang().setVisible(true);
     }//GEN-LAST:event_jButtonPerpanjangActionPerformed
+
+    private void jButtonKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKembaliActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Pengembalian().setVisible(true);
+    }//GEN-LAST:event_jButtonKembaliActionPerformed
 
     /**
      * @param args the command line arguments

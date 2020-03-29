@@ -65,8 +65,9 @@ public class Peminjaman extends javax.swing.JFrame {
         jTablePeminjaman = new javax.swing.JTable();
         jButtonPinjam = new javax.swing.JButton();
         jButtonMenu = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Peminjaman");
         setPreferredSize(new java.awt.Dimension(800, 480));
 
@@ -127,6 +128,8 @@ public class Peminjaman extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("1800570 - Fachri Veryawan Mahkota");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,6 +183,10 @@ public class Peminjaman extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +225,9 @@ public class Peminjaman extends javax.swing.JFrame {
                     .addComponent(jButtonMenu))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPanePeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
         );
 
         pack();
@@ -231,7 +240,7 @@ public class Peminjaman extends javax.swing.JFrame {
                     + "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
                     + "&useLegacyDatetimeCode=false&serverTimezone=UTC",
                     "root", "");
-            String sql = "SELECT * FROM `peminjaman`";
+            String sql = "SELECT * FROM `peminjaman` ORDER BY `tanggal_pinjam` ASC";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             jTablePeminjaman.setModel(DbUtils.resultSetToTableModel(rs));
@@ -284,17 +293,17 @@ public class Peminjaman extends javax.swing.JFrame {
             if (jTextFieldKdBk.getText().isEmpty()
                     || jTextFieldNmBk.getText().isEmpty()
                     || jTextFieldNmPj.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!"
+                JOptionPane.showMessageDialog(null, "Data gagal diperbaharui!"
                         + " Mohon lengkapi semua masukan.");
             }
             else {
                 if (kodeDuplikat == false) {
                     pst.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan!");
+                    JOptionPane.showMessageDialog(null, "Data berhasil diperbaharui!");
                     showTableData();
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!"
+                    JOptionPane.showMessageDialog(null, "Data gagal diperbaharui!"
                             + " Terdapat data dengan kode buku yang sama.");
                 }
             }
@@ -357,6 +366,7 @@ public class Peminjaman extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPanePeminjaman;
     private javax.swing.JTable jTablePeminjaman;
     private javax.swing.JTextField jTextFieldKdBk;
