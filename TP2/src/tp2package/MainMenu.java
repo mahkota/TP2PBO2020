@@ -44,6 +44,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         jButtonPerpanjang.setText("Perpanjang");
+        jButtonPerpanjang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPerpanjangActionPerformed(evt);
+            }
+        });
 
         jButtonKembali.setText("Pengembalian");
 
@@ -90,6 +95,12 @@ public class MainMenu extends javax.swing.JFrame {
         this.dispose();
         new Peminjaman().setVisible(true);
     }//GEN-LAST:event_jButtonPinjamActionPerformed
+
+    private void jButtonPerpanjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerpanjangActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Perpanjang().setVisible(true);
+    }//GEN-LAST:event_jButtonPerpanjangActionPerformed
 
     /**
      * @param args the command line arguments

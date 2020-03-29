@@ -63,8 +63,8 @@ public class Peminjaman extends javax.swing.JFrame {
         jComboBoxBlnPb = new javax.swing.JComboBox<>();
         jScrollPanePeminjaman = new javax.swing.JScrollPane();
         jTablePeminjaman = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonPinjam = new javax.swing.JButton();
+        jButtonMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Peminjaman");
@@ -113,17 +113,17 @@ public class Peminjaman extends javax.swing.JFrame {
         ));
         jScrollPanePeminjaman.setViewportView(jTablePeminjaman);
 
-        jButton1.setText("Pinjam");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPinjam.setText("Pinjam");
+        jButtonPinjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonPinjamActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Kembali ke Menu");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMenu.setText("Kembali ke Menu");
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonMenuActionPerformed(evt);
             }
         });
 
@@ -176,9 +176,9 @@ public class Peminjaman extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBoxThnPb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jButtonMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -214,8 +214,8 @@ public class Peminjaman extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldNmPj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonPinjam)
+                    .addComponent(jButtonMenu))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPanePeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(96, Short.MAX_VALUE))
@@ -241,13 +241,13 @@ public class Peminjaman extends javax.swing.JFrame {
         }
     }
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new MainMenu().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonMenuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPinjamActionPerformed
         // TODO add your handling code here:     
         try {
             boolean kodeDuplikat = false;
@@ -274,27 +274,35 @@ public class Peminjaman extends javax.swing.JFrame {
             ResultSet dup = pstchk.executeQuery();
             String kdBkCounter;
             
-            if (dup.next()) {
+            while (dup.next()) {
                 kdBkCounter = dup.getString("kode_buku");
                 if(kdBkCounter.equals(jTextFieldKdBk.getText())) {
                     kodeDuplikat = true;
                 }
             }
             
-            if (kodeDuplikat == false) {
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan!");
-                showTableData();
+            if (jTextFieldKdBk.getText().isEmpty()
+                    || jTextFieldNmBk.getText().isEmpty()
+                    || jTextFieldNmPj.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!"
+                        + " Mohon lengkapi semua masukan.");
             }
             else {
-                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!"
-                        + " Terdapat data dengan kode buku yang sama.");
+                if (kodeDuplikat == false) {
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan!");
+                    showTableData();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Data gagal ditambahkan!"
+                            + " Terdapat data dengan kode buku yang sama.");
+                }
             }
         }
         catch(SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonPinjamActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,8 +340,8 @@ public class Peminjaman extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonPinjam;
     private javax.swing.JComboBox<String> jComboBoxBlnPb;
     private javax.swing.JComboBox<String> jComboBoxBlnPj;
     private javax.swing.JComboBox<String> jComboBoxTglPb;
